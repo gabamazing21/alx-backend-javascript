@@ -5,7 +5,17 @@ import random
 
 
 async def wait_random(max_delay: int = 10) -> float:
-    """ the functions return and wait for random numbers"""
+    """
+    Asynchronous coroutine that waits for a random delay.
+
+    Args:
+        max_delay (int): The maximum number of seco
+        nds to wait. Defaults to 10.
+
+    Returns:
+        float: The amount of time waited (rand
+        om float between 0 and max_delay).
+    """
     ran = random.uniform(0, max_delay)
     await asyncio.sleep(ran)
     return ran

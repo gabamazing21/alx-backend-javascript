@@ -1,8 +1,8 @@
 export default class Building {
   constructor(sqft) {
-    if (new.target === Building) {
-      throw new Error('Cannot instantiae an abstract class directly');
-    }
+    // if (new.target === Building) {
+    //   throw new Error('Cannot instantiae an abstract class directly');
+    // }
     if (typeof sqft !== 'number') {
       throw new TypeError('sqft must be number');
     }
@@ -17,7 +17,8 @@ export default class Building {
     return this._sqft;
   }
 
-  static evacuationWarningMessage() {
+  evacuationWarningMessage() {
+    this();
     throw new Error('Class extending Building must override evacuationWarningMessage');
   }
 }

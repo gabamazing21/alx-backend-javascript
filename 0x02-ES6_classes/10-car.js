@@ -14,8 +14,12 @@ export default class Car {
     this._color = color;
   }
 
+  static get [Symbol.species]() {
+    return this; // always return base car not subclass
+  }
+
   cloneCar() {
-    const newObj = Object.create(this);
-    return newObj;
+    const Species = this.constructor[Symbol.species];
+    return new Species(this._brand, this._motor, this._color);
   }
 }

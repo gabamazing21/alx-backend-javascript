@@ -10,7 +10,11 @@ export default class Airport {
     this._code = code;
   }
 
+  // get [Symbol.toStringTag]() {
+  //   return this._code;
+  // }
+
   toString() {
-    return `Airport [${this._code}] {_name: '${this._name}', _code: '${this._code}' }`;
+    return `[object ${this._code}]`;
   }
 }

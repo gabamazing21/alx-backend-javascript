@@ -1,14 +1,15 @@
-// const { spawn } = require('child_process');
+const readline = require('readline');
 
-// const child = spawn('node', [], { stdio: ['pipe', 'pipe', 'pipe']})
-
-console.log('Welcome to Holberton School, what is your name?');
-
-process.stdin.on('data', (data) => {
-  const name = data.toString().trim();
-  console.log(`Your name is: ${name}`);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
 });
-process.on('SIGINT', () => {
-  console.log('\nThis important software is now closing ');
-  process.exit(0);
+
+rl.question('Welcome to Holberton School, what is your name?', (name) => {
+  console.log(`Your name is: ${name}`);
+
+  rl.on('close', () => {
+    console.log('This important software is now closing ');
+  });
+  rl.close();
 });

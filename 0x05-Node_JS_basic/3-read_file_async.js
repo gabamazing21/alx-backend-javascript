@@ -1,26 +1,21 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 
 /**
  * reads a csv file and counts student in each field
  * @param {string} filename
  */
-function countStudents(filename) {
+async function countStudents(filename) {
   try {
-    // ensuring file exists
-    if (!fs.existsSync(filename)) {
-      throw new Error('Cannot load the database');
-    }
-    // read the file content
-    const data = fs.readFileSync(filename, 'utf-8');
+    // read file asynchronously
+    const data = await fs.readFile(filename, 'utf-8');
 
+    // split the file content into lines
     const lines = data.trim().split('\n');
 
     if (lines < 2) {
-      console.log('No student data found.');
-      return;
+      throw new Error('Cannot load the database.');
     }
-    // extract the header line (first line)
-    // const headers = lines[0].split(',');
+    // Initialize an object to count the student by field
     const fieldCounts = {};
 
     for (let i = 1; i < lines.length; i += 1) {
@@ -44,14 +39,15 @@ function countStudents(filename) {
     console.log(`Number of students: ${totalStudents}`);
 
     // display the result
-    console.log(fieldCounts);
     for (const field in fieldCounts) {
       if (Object.prototype.hasOwnProperty.call(fieldCounts, field)) {
         console.log(`Number of students in ${field}: ${fieldCounts[field].count}. List: ${fieldCounts[field].students.join(', ')}`);
       }
     }
+    return Promise.resolve();
   } catch (error) {
-    throw new Error('Cannot load the database');
+    console.error('Cannot load the database');
+    return Promise.reject(error);
   }
 }
 

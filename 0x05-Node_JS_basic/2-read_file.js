@@ -51,7 +51,7 @@ function countStudents(filename) {
       }
     }
   } catch (error) {
-    console.error(error.message);
+    throw new Error('Cannot load the database');
   }
 }
 

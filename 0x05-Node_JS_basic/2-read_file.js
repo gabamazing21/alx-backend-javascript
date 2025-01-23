@@ -26,7 +26,7 @@ function countStudents(filename) {
 
     for (let i = 1; i < lines.length; i += 1) {
       const fields = lines[i].split(',');
-      if (fields.length === 0 || fields[0].trim() === '') {
+      if (!(fields.length === 0 || fields[0].trim() === '')) {
         // skip empty lines or invalid data
         const field = fields[3];
         const firstName = fields[0];

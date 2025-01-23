@@ -26,18 +26,17 @@ function countStudents(filename) {
 
     for (let i = 1; i < lines.length; i += 1) {
       const fields = lines[i].split(',');
-      // skip empty lines or invalid data
-      if (fields.length === 0 || fields[0].trim() === '') continue;
-
-      const field = fields[3];
-      const firstName = fields[0];
-
-      // initialize the field entry if it doesn't exist
-      if (fieldCounts[field]) {
-        fieldCounts[field].count += 1;
-        fieldCounts[field].students.push(firstName);
-      } else {
-        fieldCounts[field] = { count: 1, students: [firstName] };
+      if (fields.length === 0 || fields[0].trim() === '') {
+        // skip empty lines or invalid data
+        const field = fields[3];
+        const firstName = fields[0];
+        // initialize the field entry if it doesn't exist
+        if (fieldCounts[field]) {
+          fieldCounts[field].count += 1;
+          fieldCounts[field].students.push(firstName);
+        } else {
+          fieldCounts[field] = { count: 1, students: [firstName] };
+        }
       }
     }
 

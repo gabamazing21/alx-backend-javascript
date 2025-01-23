@@ -8,8 +8,7 @@ function countStudents(filename) {
   try {
     // ensuring file exists
     if (!fs.existsSync(filename)) {
-      console.error('Cannot load the database');
-      return;
+      throw new Error('Cannot load the database');
     }
     // read the file content
     const data = fs.readFileSync(filename, 'utf-8');
@@ -52,7 +51,7 @@ function countStudents(filename) {
       }
     }
   } catch (error) {
-    console.error('Cannot load the database');
+    console.error(error.message);
   }
 }
 

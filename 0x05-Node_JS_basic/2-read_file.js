@@ -51,8 +51,8 @@ function countStudents(filename) {
         console.log(`Number of students in ${field}: ${fieldCounts[field].count}. List: ${fieldCounts[field].students.join(', ')}`);
       }
     }
-  } catch (err) {
-    console.error('Error reading the file:', err);
+  } catch (error) {
+    console.error('Cannot load the database');
   }
 }
 

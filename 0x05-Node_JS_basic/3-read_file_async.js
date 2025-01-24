@@ -39,6 +39,7 @@ async function countStudents(filename) {
     console.log(`Number of students: ${totalStudents}`);
 
     // display the result
+    console.log(fieldCounts);
     for (const field in fieldCounts) {
       if (Object.prototype.hasOwnProperty.call(fieldCounts, field)) {
         console.log(`Number of students in ${field}: ${fieldCounts[field].count}. List: ${fieldCounts[field].students.join(', ')}`);

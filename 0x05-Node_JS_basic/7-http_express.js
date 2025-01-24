@@ -7,7 +7,7 @@ const port = 1245;
 app.get('/', (req, res) => {
   req.statusCode = 200;
   req.header('Content-Type', 'txt/plain');
-  res.send('Hello ALX!\n');
+  res.send('Hello Holberton School!\n');
 });
 
 async function getcountStudents(filename) {
@@ -59,7 +59,7 @@ async function getcountStudents(filename) {
 app.get('/students', async (req, res) => {
   const filename = process.argv[2];
   if (!filename) {
-    res.status(400).send('No database file provided.\n'); // Bad Request
+    res.status(400).send('Cannot load the database.\n'); // Bad Request
     return;
   }
 
@@ -70,7 +70,7 @@ app.get('/students', async (req, res) => {
     const totalStudent = studentObject.totalStudents;
 
     if (totalStudent === 0) {
-      res.send('This is the list of our students. No student found.\n');
+      res.send('Cannot load the database.\n');
     } else {
       const fieldCount = studentObject.fieldCounts;
       res.write('This is the list of our students\n');

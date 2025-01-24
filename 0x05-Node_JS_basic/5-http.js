@@ -53,7 +53,7 @@ const port = 1245;
 const app = createServer(async (req, res) => {
   if (req.url === '/') {
     res.setHeader('Content-Type', 'text/plain');
-    res.end('Hello ALX!');
+    res.end('Hello Holberton School!');
   } else if (req.url === '/students' && req.method === 'GET') {
     const filename = process.argv[2];
     if (!filename) {
@@ -78,7 +78,10 @@ const app = createServer(async (req, res) => {
 
         for (const field in fieldCount) {
           if (Object.prototype.hasOwnProperty.call(fieldCount, field)) {
-            res.write(`Number of students in ${field}: ${fieldCount[field].count}. List: ${fieldCount[field].students.join(', ')}\n`);
+            res.write(`Number of students in ${field}: ${fieldCount[field]
+              .count}. List: ${fieldCount[field]
+              .students
+              .join(', ')}\n`);
           }
         }
         res.end();

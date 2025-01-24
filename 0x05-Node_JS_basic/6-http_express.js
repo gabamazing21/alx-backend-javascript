@@ -5,7 +5,7 @@ const port = 1245;
 
 app.get('/', (req, res) => {
   req.statusCode = 200;
-  res.send('Hello ALX!');
+  res.send('Hello Holberton School!');
 });
 
 app.listen(port, () => {

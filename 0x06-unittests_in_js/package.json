@@ -1,6 +1,7 @@
 {
   "name": "0x06-unittests_in_js",
   "version": "1.0.0",
+  "type": "module",
   "description": "learning unit test in javascripti",
   "main": "0-calcul.js",
   "scripts": {
@@ -10,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^5.1.2",
     "mocha": "^11.1.0"
   }
 }

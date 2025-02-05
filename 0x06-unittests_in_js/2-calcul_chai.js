@@ -1,4 +1,4 @@
-export default function calculateNumber(type, a, b) {
+function calculateNumber(type, a, b) {
    const c = Math.round(a);
    const d = Math.round(b);
     if (type === 'SUM' ) {
@@ -14,3 +14,4 @@ export default function calculateNumber(type, a, b) {
         throw new Error('"invalid type')
     };
 }
+module.exports = calculateNumber;
